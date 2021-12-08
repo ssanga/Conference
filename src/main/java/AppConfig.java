@@ -1,20 +1,25 @@
-import com.ssanga.model.Speaker;
-import com.ssanga.repository.HibernateSpeakerRepositoryImp;
-import com.ssanga.repository.SpeakerRepository;
-import com.ssanga.service.SpeakerService;
-import com.ssanga.service.SpeakerServiceImp;
-import org.springframework.beans.factory.config.BeanDefinition;
+import com.ssanga.util.CalendarFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Calendar;
 
 @Configuration
 @ComponentScan({"com.ssanga"})
 public class AppConfig {
+
+    @Bean(name="cal")
+    public CalendarFactory calendarFactory(){
+        CalendarFactory factory = new CalendarFactory();
+        factory.addDays(2);
+        return factory;
+    }
+
+    @Bean
+    public Calendar cal() throws Exception{
+        return calendarFactory().getObject();
+    }
 
     /*
     @Bean(name = "speakerService")

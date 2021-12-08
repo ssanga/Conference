@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service("speakerService")
@@ -23,6 +24,11 @@ public class SpeakerServiceImp implements SpeakerService {
     public SpeakerServiceImp(SpeakerRepository repository){
         System.out.println("SpeakerServiceImpl repository constructor");
         this.repository = repository;
+    }
+
+    @PostConstruct
+    private void initialize(){
+        System.out.println("Called after the constructor");
     }
 
     @Override
