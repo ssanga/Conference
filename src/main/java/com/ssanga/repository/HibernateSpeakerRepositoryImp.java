@@ -1,10 +1,12 @@
 package com.ssanga.repository;
 
 import com.ssanga.model.Speaker;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository("speakerRepository")
 public class HibernateSpeakerRepositoryImp implements SpeakerRepository {
 
     @Override
